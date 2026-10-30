@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Ledger - AI Loan Eligibility Checker, Credit Score Analyzer, EMI Calculator and AI Financial Tips.">
+<title>Ledger - AI Loan &amp; Credit Toolkit</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="logo"><i>L</i>Ledger</div>
+  <div class="tag">Smarter borrowing, in one place</div>
+</header>
+
+<nav id="nav">
+  <button class="on" data-t="elig">Loan Eligibility</button>
+  <button data-t="score">Credit Score</button>
+  <button data-t="emi">EMI Calculator</button>
+  <button data-t="tips">AI Tips</button>
+</nav>
+
+<section id="elig" class="glass tab">
+  <h2>Loan Eligibility Checker</h2><p class="sub">Estimate what you can borrow, then get an AI explanation.</p>
+  <div class="grid"><div>
+    <div class="row"><div><label>Full name</label><input id="e_name" placeholder="Asha Patil"></div>
+    <div><label>Employment</label><select id="e_emp"><option>Salaried</option><option>Self-employed</option><option>Business owner</option></select></div></div>
+    <div class="row"><div><label>Monthly income (₹)</label><input id="e_inc" type="number" value="60000"></div>
+    <div><label>Existing EMIs (₹/mo)</label><input id="e_ex" type="number" value="8000"></div></div>
+    <div class="row"><div><label>Credit score</label><input id="e_cs" type="number" value="740" min="300" max="900"></div>
+    <div><label>Loan type</label><select id="e_type"><option>Personal</option><option>Home</option><option>Car</option><option>Education</option></select></div></div>
+    <div class="row"><div><label>Loan amount (₹)</label><input id="e_amt" type="number" value="500000"></div>
+    <div><label>Tenure (years)</label><input id="e_ten" type="number" value="5" min="1" max="30"></div></div>
+    <button class="btn" id="e_go">Check eligibility</button>
+  </div>
+  <div class="res" id="e_out"><p class="muted">Your result will appear here.</p></div></div>
+</section>
+
+<section id="score" class="glass tab" hidden>
+  <h2>Credit Score Analyzer</h2><p class="sub">See where you stand and what moves the needle.</p>
+  <div class="grid"><div>
+    <div class="row"><div><label>Credit score</label><input id="c_s" type="number" value="690" min="300" max="900"></div>
+    <div><label>Card utilization (%)</label><input id="c_u" type="number" value="55"></div></div>
+    <div class="row"><div><label>On-time payments (%)</label><input id="c_p" type="number" value="92"></div>
+    <div><label>Credit age (years)</label><input id="c_a" type="number" value="3"></div></div>
+    <div class="row"><div><label>Hard enquiries (12 mo)</label><input id="c_e" type="number" value="4"></div>
+    <div><label>Active loans/cards</label><input id="c_l" type="number" value="3"></div></div>
+    <button class="btn" id="c_go">Analyze score</button>
+  </div>
+  <div class="res" id="c_out"><p class="muted">Your analysis will appear here.</p></div></div>
+</section>
+
+<section id="emi" class="glass tab" hidden>
+  <h2>EMI Calculator</h2><p class="sub">Adjust the sliders — results update live.</p>
+  <div class="grid"><div>
+    <label>Loan amount: <b id="m_ap"></b></label><input id="m_a" type="range" min="50000" max="10000000" step="50000" value="1000000">
+    <label>Interest rate: <b id="m_rp"></b></label><input id="m_r" type="range" min="6" max="24" step="0.1" value="10.5">
+    <label>Tenure: <b id="m_tp"></b></label><input id="m_t" type="range" min="1" max="30" step="1" value="5">
+  </div>
+  <div id="m_out"></div></div>
+</section>
+
+<section id="tips" class="glass tab" hidden>
+  <h2>AI Financial Tips</h2><p class="sub">Pick a topic or ask your own question.</p>
+  <div class="chips" id="chips"></div>
+  <div class="row" style="grid-template-columns:1fr auto"><input id="t_q" placeholder="e.g. Should I prepay my home loan or invest?"><button class="btn" id="t_go" style="margin:0;width:auto;padding:10px 20px">Ask</button></div>
+  <div class="ai" id="t_out"><h4>Ledger AI</h4>Ask a question to get started.</div>
+</section>
+
+<div class="glass hist" id="hist_box"><h2 style="font-size:15px">Recent activity</h2><div id="hist"><span class="muted">Nothing yet.</span></div><div class="sv" id="sv"></div></div>
+<footer>Ledger provides estimates for education only — not financial advice. Lending decisions rest with the lender.</footer>
+</div>
+
+<!-- Scripts: order matters (config -> logic -> services -> UI) -->
+<script src="js/config.js"></script>
+<script src="js/calculators.js"></script>
+<script src="js/advisor.js"></script>
+<script src="js/ai.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
